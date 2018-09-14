@@ -12,22 +12,9 @@
             window.location = link;
         }
 
-        function handle() {
-            var task = document.getElementById("task").value;
-        	for (var i = 0; i < task.length; i++) {
-        		if (task[i] == "\"" || task[i] == "'") {
-                    event.preventDefault();
-        			iziToast.error({
-        				title: "Error",
-        				message: "You can't use ' or \" symbols",
-        			});
-                    document.getElementById("task").value = "";
-                    return;
-        		}
-        	}
-        }
-
         </script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
         <div id="list">
@@ -43,12 +30,10 @@
             }
             ?>
 
-            <br>
-
-            <form method="POST" action="adding_handler.php">
-                <input id="task" type="text" placeholder="My task" name="task" autocomplete="off">
-                <input type="submit" value="Add task" onclick="handle()">
-            </form>
         </div>
+        <form id="form">
+            <input id="task" type="text" placeholder="My task" name="task" autocomplete="off">
+            <input type="submit" value="Add task">
+        </form>
     </body>
 </html>
