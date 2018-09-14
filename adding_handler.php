@@ -1,0 +1,14 @@
+<?php
+
+$task = $_POST["task"];
+
+$connection = mysqli_connect("localhost", "root", "", "tm_db");
+mysqli_query($connection, "INSERT INTO Tasks VALUES ('$task')");
+
+?>
+
+<script>
+
+window.location = "index.php";
+
+</script>
