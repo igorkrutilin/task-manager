@@ -25,4 +25,27 @@ $(document).ready(function() {
             }
         });
     });
+
+    $(document).on("click", "button", function() {
+        var div = $(this).parent();
+        var div_text = $(this).parent().text();
+        var task = "";
+        for (var i = 0; i < div_text.length - 3; i++) {
+            task += div_text[i];
+        }
+        $.ajax({
+            type: "POST",
+            url: "deleting_handler.php",
+            data: {
+                task: task
+            },
+            success: function() {
+                div.remove();
+                iziToast.success({
+                    title: "Success!",
+                    message: "Task marked as completed!",
+                });
+            }
+        });
+    });
 });
